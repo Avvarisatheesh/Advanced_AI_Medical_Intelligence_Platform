@@ -1,0 +1,9 @@
+Flask
+numpy
+pandas
+scikit-learn
+tensorflow
+Pillow
+joblib
+Opencv-python
+google-genai

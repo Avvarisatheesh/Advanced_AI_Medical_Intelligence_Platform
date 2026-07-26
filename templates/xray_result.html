@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced AI Medical Intelligence Platform</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #d9f3ea;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        }
+
+        img {
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px gray;
+            max-width: 350px;
+        }
+
+        .btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #1976D2;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+
+        .report {
+            text-align: left;
+            background: #f8f9fa;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🩺 AI Medical Intelligence Platform</h1>
+
+    <hr>
+
+    <h2>Prediction Result</h2>
+
+    <p><strong>Disease:</strong> {{ disease }}</p>
+
+    {% if disease=="PNEUMONIA" %}
+    <p style="color:red;">
+        <strong>Confidence:</strong> {{ confidence }}%
+    </p>
+    {% else %}
+    <p style="color:green;">
+        <strong>Confidence:</strong> {{ confidence }}%
+    </p>
+    {% endif %}
+
+    <p><strong>Model Accuracy:</strong> {{ model_accuracy }}%</p>
+
+    <p><strong>Prediction Time:</strong> {{ time }}</p>
+
+    <br>
+
+    <h3>Uploaded Chest X-ray</h3>
+
+    <img src="{{ url_for('static', filename=image) }}" alt="Uploaded X-ray">
+
+    <br><br>
+
+    {% if gradcam %}
+
+    <h3>Grad-CAM Heatmap</h3>
+
+    <img src="{{ url_for('static', filename=gradcam) }}" alt="GradCAM">
+
+    <p>
+        The highlighted regions indicate the areas of the chest X-ray
+        that contributed most to the AI model's prediction.
+    </p>
+
+    {% endif %}
+
+    <br>
+
+    {% if disease=="PNEUMONIA" %}
+
+    <h2 style="color:red;">⚠️ Pneumonia Detected</h2>
+
+    <p>
+        The uploaded chest X-ray may indicate pneumonia.
+        Please consult a qualified radiologist or healthcare professional.
+    </p>
+
+    {% else %}
+
+    <h2 style="color:green;">✅ Normal Chest X-ray</h2>
+
+    <p>
+        No signs of pneumonia were detected in the uploaded chest X-ray.
+    </p>
+
+    {% endif %}
+
+    <hr>
+
+    <h2>🤖 AI Medical Report (Google Gemini)</h2>
+
+    <div class="report">
+    <pre style="white-space:pre-wrap;
+    font-family:Arial,sans-serif;
+    font-size:16px;
+    line-height:1.8;
+    margin:0;">
+    {{ ai_report }}
+    </pre>
+    </div>
+
+    <a href="/" class="btn">⬅️ Back to Home</a>
+
+    <hr>
+
+    <h3>AI Medical Intelligence Platform</h3>
+
+    <p>
+        <strong>Developed by:</strong> Avvari Satheesh
+        <br>
+        B.Tech CSE – Artificial Intelligence
+    </p>
+
+    <h3>Model Information</h3>
+
+    <div style="display:inline-block;text-align:left;">
+
+        <ul>
+
+            <li><b>Model:</b> Convolutional Neural Network (CNN)</li>
+
+            <li><b>Framework:</b> TensorFlow / Keras</li>
+
+            <li><b>Input Size:</b> 224 × 224 pixels</li>
+
+            <li><b>Output Classes:</b> Normal, Pneumonia</li>
+
+            <li><b>Explainability:</b> Grad-CAM</li>
+
+            <li><b>Large Language Model:</b> Google Gemini</li>
+
+            <li><b>Model Accuracy:</b> {{ model_accuracy }}%</li>
+
+            <li><b>Prediction Time:</b> {{ time }}</li>
+
+        </ul>
+
+    </div>
+
+    <p style="font-size:13px;color:gray;line-height:1.6;">
+
+        ⚠️ <strong>Disclaimer:</strong>
+
+        This application is intended only for educational,
+        research and demonstration purposes.
+
+        The AI-generated medical report and disease prediction
+        should not replace professional medical advice,
+        diagnosis or treatment.
+
+        Always consult a qualified healthcare professional
+        before making medical decisions.
+
+    </p>
+
+</div>
+
+</body>
+
+</html>

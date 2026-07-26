@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Analytics Dashboard</h1>
+
+    <p class="subtitle">
+        AI Medical Intelligence Platform Statistics
+    </p>
+
+    <div class="card">
+        <h2>📈 Total Predictions</h2>
+        <h1>{{ total }}</h1>
+    </div>
+
+    <div class="card">
+        <h2>🩺 Normal Cases</h2>
+        <h1>{{ normal }}</h1>
+    </div>
+
+    <div class="card">
+        <h2>🫁 Pneumonia Cases</h2>
+        <h1>{{ pneumonia }}</h1>
+    </div>
+
+    <div class="card">
+        <h2>🕒 Latest Prediction</h2>
+        <p>{{ latest }}</p>
+    </div>
+
+    <br>
+
+    <a href="/">
+        <button>🏠 Back to Home</button>
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+# Python
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# VS Code
+.vscode/
+
+# Environment Variables
+.env
+
+# Flask Uploads
+uploads/
+static/uploads/*
+
+# Database
+*.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Dataset
+dataset/
+data/
+data/medicine_dataset.csv
+
+# Large AI Model Files
+model/xray_model.keras
+model/medicine_data.pkl
+
+# Temporary Files
+*.tmp
+*.bak
